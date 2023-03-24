@@ -1,0 +1,11 @@
+asgiref==3.6.0
+Django==4.1.7
+# djangogrpcframework==0.2.1
+git+https://github.com/profmcdan/django-grpc-framework.git@main
+djangorestframework==3.14.0
+drf-spectacular==0.26.1
+grpcio==1.51.3
+grpcio-tools==1.51.3
+protobuf==4.22.1
+pytz==2022.7.1
+sqlparse==0.4.3

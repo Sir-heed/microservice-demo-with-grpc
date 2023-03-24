@@ -1,0 +1,53 @@
+version: "3.9"
+services:
+  product: &product
+    build:
+      context: .
+      dockerfile: product/Dockerfile
+    command: python manage.py runserver 0.0.0.0:10007
+    volumes:
+      - ./product:/app
+    ports:
+      - "10007:10007"
+    env_file:
+      - ./.env
+    restart: always
+
+  dashboard: &dashboard
+    build:
+      context: .
+      dockerfile: dashboard/Dockerfile
+    command: python manage.py runserver 0.0.0.0:10008
+    volumes:
+      - ./dashboard:/app
+    ports:
+      - "10008:10008"
+    env_file:
+      - ./.env
+    restart: always
+
+  dashboard_grpc: &dashboard_grpc
+    build:
+      context: .
+      dockerfile: dashboard/Dockerfile
+    command: python manage.py grpcrunserver 0.0.0.0:10009
+    volumes:
+      - ./dashboard:/app
+    ports:
+      - "10009:10009"
+    env_file:
+      - ./.env
+    restart: always
+
+  product_grpc: &product_grpc
+    build:
+      context: .
+      dockerfile: dashboard/Dockerfile
+    command: python manage.py grpcrunserver 0.0.0.0:10006
+    volumes:
+      - ./product:/app
+    ports:
+      - "10006:10006"
+    env_file:
+      - ./.env
+    restart: always

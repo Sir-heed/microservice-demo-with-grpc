@@ -1,0 +1,21 @@
+syntax = "proto3";
+package product;
+
+service ProductService {
+    rpc LikeProduct(LikeProductRequest) returns (LikeProductResponse) {}
+}
+
+message Product {
+    string id = 1;
+    string title = 2;
+    string image = 3;
+    int64 likes = 4;
+}
+
+message LikeProductRequest {
+    string id = 1;
+}
+
+message LikeProductResponse {
+    Product product = 1;
+}

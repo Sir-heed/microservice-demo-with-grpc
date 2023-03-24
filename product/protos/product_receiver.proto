@@ -1,0 +1,35 @@
+syntax = "proto3";
+package product_receiver;
+import "google/protobuf/empty.proto";
+
+service ProductReceiverService {
+    rpc CreateProductFromReceiver(CreateProductFromReceiverRequest) returns (CreateProductFromReceiverResponse) {}
+    rpc Update(UpdateByIdRequest) returns (UpdateByIdResponse) {}
+    rpc Delete(DeleteByIdRequest) returns (google.protobuf.Empty) {}
+}
+
+message ProductReceiver {
+    string product_id = 1;
+    string title = 2;
+    string image = 3;
+}
+
+message CreateProductFromReceiverRequest {
+    ProductReceiver product_receiver = 1;
+}
+
+message CreateProductFromReceiverResponse {
+    ProductReceiver product_receiver = 1;
+}
+
+message UpdateByIdRequest {
+    ProductReceiver product_receiver = 1;
+}
+
+message UpdateByIdResponse {
+    ProductReceiver product_receiver = 1;
+}
+
+message DeleteByIdRequest {
+    string product_id = 1;
+}
